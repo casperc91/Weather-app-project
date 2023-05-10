@@ -1,7 +1,16 @@
+
 body {
-  margin-left: 150px;
-  margin-top: 100px;
-  margin-right: 150px;
+  margin: 0 auto;
+  display: block;
+  padding-top: 100px;
+}
+.containerbody {
+  margin: 0 auto;
+  display: block;
+  max-width: 900px;
+  box-sizing: border-box;
+  box-shadow: rgba(10, 10, 10, 0.16) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 h1,
 h2 {
@@ -50,9 +59,7 @@ h5 {
   padding: 150px 15px 15px 0px;
   text-align: center;
 }
-.containerbody {
-  max-width: 900px;
-}
+
 ul {
   text-align: center;
   list-style: none;
@@ -70,4 +77,13 @@ img {
 #current-location {
   margin-left: 10px;
   margin-right: 0px;
+  background-color: white;
+  font-size: small;
+}
+
+footer {
+  display: inline-block;
+  text-align: left;
+  size: small;
+  padding-left: 50px;
 }
