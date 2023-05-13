@@ -17,7 +17,8 @@
   </head>
   <body>
     
-<div class="containerbody">
+<div class="containerbody"  >
+  <div class="appwrapper"> 
   <form id="city-form">
     <div class="input-group" >
       <input
@@ -36,16 +37,20 @@
     
       
     <div class="row">
-    <div class="col">
+    <div class="col-6">
     <h1> <div class="city" id="city"> Chicago, IL </div></h1>
        <h2> <div class="precip" id="precip">Precipitation: 6% </div>
        <div class="humidity" id="humidity"> Humidity: 59% </div>
         <div class="wind" id="wind"> Wind: 12 mph </div>
         </h2>
     </div>
-    <div class="col" >
+    <div class="col-6" >
         <h3><span>
-          <img src="images/weather-icon-cloudy.png" alt="clouds" class="cloudy"/>
+          <img 
+            src="images/weather-icon-cloudy.png" 
+            alt="clouds" 
+            class="cloudy"
+            id="icon"/>
         </span>
         <span class= "temp" id="temp"> 49 </span>
         <span class = "units">
@@ -118,13 +123,14 @@
     
     </div>
     
-    </div>
-
     
 
-<footer> 
+    
+ 
+</div>
 <a href="https://github.com/casperc91/Weather-app-project">Open-source code</a> by Chinetha Casper
-</footer>
+
+  </div> 
 <script src="src/app.js"> </script>
   </body>
 </html>
