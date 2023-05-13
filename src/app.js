@@ -54,6 +54,13 @@ function weatherUpdates(response) {
   getDescrip(response);
   currentCityname(response);
   formatDate(date);
+
+  let iconElement = document.querySelector("#icon");
+
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function getHumidity(response) {
