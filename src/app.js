@@ -108,6 +108,20 @@ function currentCityname(response) {
   let citynameElement = document.querySelector("h1");
   citynameElement.innerHTML = currentcity;
 }
+function displayCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  fahrenheitlink.classList.add("active");
+  let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+function displayfahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitTemp = null;
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", city);
@@ -115,21 +129,21 @@ form.addEventListener("submit", city);
 let button = document.querySelector("#current-location");
 button.addEventListener("click", currentLocationclick);
 
-//
-//function tempClick(event) {
-//  document.querySelector("#temp").innerHTML = celsiusTemp;
+let celsiuslink = document.querySelector("#celsius");
+celsiuslink.addEventListener("click", displayCelsius);
+
+let fahrenheitlink = document.querySelector("#fahrenheit");
+
+citytemp("Chicago");
+//function displayFahrenheit(event) {
+
+//document.querySelector("#temp").innerHTML = celsiusTemp;
 //}
-//
+
 //let temperature = 49;
-//let celsiusTemp = Math.round(((temperature - 32) * 5) / 9);
-//let celsiuslink = document.querySelector("#celsius");
-//celsiuslink.addEventListener("click", tempClick);
 //
-//function ftempClick(event) {
-//  document.querySelector("#temp").innerHTML = fahrenheitTemp;
-//}
 //
+
 //let fahrenheitTemp = 49;
-//let fahrenheitlink = document.querySelector("#fahrenheit");
-//fahrenheitlink.addEventListener("click", ftempClick);
+
 //
