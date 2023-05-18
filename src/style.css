@@ -76,7 +76,20 @@ button {
 img {
   width: 15%;
 }
-
+.tempunits .units {
+  text-decoration: none;
+}
+.tempunits .units:hover {
+  text-decoration: underline;
+}
+.tempunits .active {
+  text-decoration: none;
+  cursor: default;
+  color: black;
+}
+.tempunits .active:hover {
+  text-decoration: none;
+}
 #current-location {
   margin-left: 10px;
   margin-right: 0px;

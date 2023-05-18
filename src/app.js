@@ -54,6 +54,9 @@ function weatherUpdates(response) {
   getDescrip(response);
   currentCityname(response);
   formatDate(date);
+  let tempElement = document.querySelector("#temp");
+  fahrenheitTemp = response.data.main.temp;
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
 
   let iconElement = document.querySelector("#icon");
 
@@ -97,8 +100,6 @@ function currentPosition(position) {
   let lat = position.coords.latitude;
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  console.log(lon);
-  console.log(lat);
 
   axios.get(apiUrl).then(weatherUpdates);
 }
@@ -110,17 +111,19 @@ function currentCityname(response) {
 }
 function displayCelsius(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-  fahrenheitlink.classList.add("active");
+  let tempElement = document.querySelector("#temp");
+  fahrenheitlink.classList.remove("active");
+  celsiuslink.classList.add("active");
   let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
+  tempElement.innerHTML = Math.round(celsiusTemp);
 }
 function displayfahrenheit(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+  celsiuslink.classList.remove("active");
+  fahrenheitlink.classList.add("active");
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
-
 let fahrenheitTemp = null;
 
 let form = document.querySelector("#city-form");
@@ -133,17 +136,6 @@ let celsiuslink = document.querySelector("#celsius");
 celsiuslink.addEventListener("click", displayCelsius);
 
 let fahrenheitlink = document.querySelector("#fahrenheit");
+fahrenheitlink.addEventListener("click", displayfahrenheit);
 
 citytemp("Chicago");
-//function displayFahrenheit(event) {
-
-//document.querySelector("#temp").innerHTML = celsiusTemp;
-//}
-
-//let temperature = 49;
-//
-//
-
-//let fahrenheitTemp = 49;
-
-//
