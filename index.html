@@ -13,125 +13,81 @@
     />
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    
   </head>
-  <body>
+  <body class="body" style="background-image: url(images/chicago2.jpg); background-size: 100% 150%;  resize: both; background-repeat: no-repeat;
+  ">
     
-<div class="containerbody"  >
-  <div class="appwrapper"> 
-  <form id="city-form">
-    <div class="input-group" >
-      <input
-        type="search"
-        class="form-control rounded "
-        placeholder="City"
-        id="city-input"
-        autocomplete="off"
-      />
-      <button type="button" class="btn btn-outline-primary button" id="searchcity">search</button>
-      <button type="button" class="btn btn-outline-secondary"  id="current-location">Current</button>
-    </div>
-  </form>
-    <br />
-    
-    
+    <div class="containerbody">
       
-    <div class="row">
-    <div class="col-6">
-    <h1> <div class="city" id="city"> Chicago, IL </div></h1>
-       <h2> <div class="precip" id="precip">Precipitation: % </div>
-       <div class="humidity" id="humidity"> Humidity: % </div>
-        <div class="wind" id="wind"> Wind:  mph </div>
-        </h2>
-    </div>
-    <div class="col-6" >
-        <h3><span>
-          <img 
-            src="" 
-            alt="clouds" 
-            class="float left"
-            id="icon"/>
-        </span>
-        <span class= "temp" id="temp">  </span>
-        <span class="tempunits">
-          <a href="#" id="fahrenheit" class="active" class="units"> °F </a> |
-          <a href="#" id="celsius" class="units"> °C</a> 
+      <div class="appwrapper" style="background-color: white; border-radius: 1%;">
+        <form id="city-form">
+          <div class="input-group">
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="City"
+              id="city-input"
+              autocomplete="off"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-primary button"
+              id="searchcity"
+            >
+              search
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              id="current-location"
+            >
+              Current
+            </button>
+          </div>
+        </form>
+        <br />
+
+        <div class="row">
+          <div class="col-6">
+            <h1><div class="city" id="city">Chicago, IL</div></h1>
+            <h2>
+              <div class="precip" id="precip">Precipitation: %</div>
+              <div class="humidity" id="humidity">Humidity: %</div>
+              <div class="wind" id="wind">Wind: mph</div>
+            </h2>
+          </div>
+          <div class="col-6">
+            <h3>
+              <span>
+                <img src="" alt="clouds" class="float left" id="icon" />
+              </span>
+              <span class="temp" id="temp"> </span>
+              <span class="tempunits">
+                <a href="#" id="fahrenheit" class="active" class="units">
+                  °F
+                </a>
+                
+              </span>
+            </h3>
+
+            <h4 class="current-date" id="date"></h4>
+            <h5>
+              <div class="descrip" id="descrip"></div>
+            </h5>
+          </div>
+        </div>
+
+        <div class="forecast" id="forecast">
           
-        </span></h3>
-
-       <h4 class="current-date" id="date"> 
-        </h4>
-        <h5>
-          <div class = "descrip" id="descrip"> </div>
-        </h5>
-    </div>
-    </div>
-
-    <div class="row forcast" >
-    <div class="col">
+      </div>
+      </div>
+      
+      <a  href="https://github.com/casperc91/Weather-app-project">
+        Open-source code
+      </a>
+     <span class="card-footer"> by Chinetha Casper</span>
     
-    <ul>
-        <li>
-            Thu
-        </li>
-    
-    <li>
-    🌧 
-    </li>
-    <li>
-51°F | 48°C
-    </li> 
-    </div>
-
-    <div class="col" > 
-    <ul>
-        <li>
-            Fri
-        </li>
-        <li>
-            ⛈
-
-        </li>
-        <li>
- 61°F | 38°C 
-        </li>
-
-
-
-
-
-        </ul> 
-</div>
-<div class="col"> 
-    Sat <br />
-    🌧 <br />
-    40°F | 30°C 
-    
-</div>
-<div class="col"> 
-    Sun <br />
-    ⛅️<br />
-    55°F | 42°C
-    
-</div>
-<div class="col"> 
-    Mon <br />
-    🌧 <br />
-    58°F | 42°C 
-
-    </div>
-    
-    
-    </div>
-    
-    
-
-    
- 
-</div>
-<a href="https://github.com/casperc91/Weather-app-project">Open-source code</a> by Chinetha Casper
-
-  </div> 
-<script src="src/app.js"> </script>
+  
+    <script src="src/app.js"></script>
   </body>
 </html>

@@ -24,6 +24,14 @@ function formatDate() {
   dateElement.innerHTML = `${currentDay}, ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  return days[day];
+}
+
 function showTemp(response) {
   let temperature = Math.round(response.data.main.temp);
   let tempElement = document.querySelector("#temp");
@@ -45,6 +53,12 @@ function city(event) {
   document.querySelector("h1").innerHTML = city;
   citytemp(city);
 }
+function getForecast(coordinates) {
+  let apiKey = "ff1d9ea9376b5c27a82e04fc2b2abdbb";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function weatherUpdates(response) {
   showTemp(response);
@@ -64,6 +78,46 @@ function weatherUpdates(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  console.log("forecast");
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+            <div class="col-2">
+              <div class="forecast-dates">${formatDay(forecastDay.dt)}</div>
+              <img
+                src="https://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png"
+                alt=""
+                height="36"
+                width="36"
+              />
+              <div class="forecast-temps">
+                <span class="forecast-temps-max"> ${Math.round(
+                  forecastDay.temp.max
+                )}° </span>
+                <span class="forecast-temps-min"> ${Math.round(
+                  forecastDay.temp.min
+                )}° </span>
+              </div>
+            </div>
+  
+        `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function getHumidity(response) {
@@ -109,33 +163,11 @@ function currentCityname(response) {
   let citynameElement = document.querySelector("h1");
   citynameElement.innerHTML = currentcity;
 }
-function displayCelsius(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#temp");
-  fahrenheitlink.classList.remove("active");
-  celsiuslink.classList.add("active");
-  let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
-  tempElement.innerHTML = Math.round(celsiusTemp);
-}
-function displayfahrenheit(event) {
-  event.preventDefault();
-  celsiuslink.classList.remove("active");
-  fahrenheitlink.classList.add("active");
-  let tempElement = document.querySelector("#temp");
-  tempElement.innerHTML = Math.round(fahrenheitTemp);
-}
-let fahrenheitTemp = null;
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", city);
 
 let button = document.querySelector("#current-location");
 button.addEventListener("click", currentLocationclick);
-
-let celsiuslink = document.querySelector("#celsius");
-celsiuslink.addEventListener("click", displayCelsius);
-
-let fahrenheitlink = document.querySelector("#fahrenheit");
-fahrenheitlink.addEventListener("click", displayfahrenheit);
 
 citytemp("Chicago");
